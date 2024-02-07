@@ -84,64 +84,13 @@ def spacemouse_callback():
         global profile
         global actualParam
         global actualParamData
-        if (profile == "XYZ"):
-            if (state.x == state.y == state.z == 0):
-                client.send_message("/spacemouse/x", 0)
-                client.send_message("/spacemouse/y", 0)
-                client.send_message("/spacemouse/z", 0)
-                text_value_dictionary["text_value_X"].set("000")
-                text_value_dictionary["text_value_Y"].set("000")
-                text_value_dictionary["text_value_Z"].set("000")
-            else:
-                if (abs(state.x) > abs(state.y) and abs(state.x) > abs(state.z)):
-                    actualParam = "x"
-                    actualParamData = state.x
-                elif (abs(state.y) > abs(state.x) and abs(state.y) > abs(state.z)):
-                    actualParam = "y"
-                    actualParamData = state.y
-                else:
-                    actualParam = "z"
-                    actualParamData = state.z
-        else:
-            if (state.roll == state.pitch == state.yaw == 0):
-                client.send_message("/spacemouse/roll", 0)
-                client.send_message("/spacemouse/pitch", 0)
-                client.send_message("/spacemouse/yaw", 0)
-                text_value_dictionary["text_value_ROLL"].set("000")
-                text_value_dictionary["text_value_PITCH"].set("000")
-                text_value_dictionary["text_value_YAW"].set("000")
-                client.send_message("/spacemouse/a", 0)
-                client.send_message("/spacemouse/e", 0)
-                client.send_message("/spacemouse/d", 0)
-                text_value_dictionary["text_value_A"].set("000")
-                text_value_dictionary["text_value_E"].set("000")
-                text_value_dictionary["text_value_D"].set("000")
-            else:
-                if (abs(state.roll) > abs(state.pitch) and abs(state.roll) > abs(state.yaw) and abs(state.roll) > abs(state.z) and profile == "YRP"):
-
-                    actualParam = "roll"
-                    actualParamData = state.roll
-                elif (abs(state.pitch) > abs(state.roll) and abs(state.pitch) > abs(state.yaw) and abs(state.pitch) > abs(state.z)):
-                    if (profile == "AED"):
-                        actualParam = "d"
-                    else :
-                        actualParam = "pitch"
-                    actualParamData = state.pitch
-                elif (abs(state.z) > abs(state.roll) and abs(state.z) > abs(state.yaw) and abs(state.z) > abs(state.pitch) and profile == "AED"):
-                    actualParam = "e"
-                    actualParamData = state.z
-                else:
-                    if (profile == "AED"):
-                        actualParam = "a"
-                    else :
-                        actualParam = "yaw"
-                    actualParamData = state.yaw
-        actualParamData = int(float(actualParamData)*10000)
-        if (actualParamData > 10000 or actualParamData < -10000):
-            actualParamData = 0
-        if (actualParamData != 0):
-            text_value_dictionary["text_value_"+actualParam.upper()].set(actualParamData)
-        client.send_message("/spacemouse/"+actualParam, actualParamData)
+        
+        client.send_message("/spacemouse/x", state.x*10000)
+        client.send_message("/spacemouse/y", state.y*10000)
+        client.send_message("/spacemouse/z", state.z*10000)
+        client.send_message("/spacemouse/roll", state.roll*10000)
+        client.send_message("/spacemouse/pitch", state.pitch*10000)
+        client.send_message("/spacemouse/yaw", state.yaw*10000)
 
     success = pyspacemouse.open(dof_callback=sendOSC, button_callback=someButton,
                                 button_callback_arr=button_arr)
