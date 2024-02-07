@@ -49,5 +49,5 @@ Il existe déjà une librairie pour recevoir le hid de la spacemouse.
 
   # Crédits
   - pyspacemouse :  Jakub Andrýsek et kuband
-  - script : tainalo2 Alexandre RONGIER : alexandre-rongier.fr
+  - script : tainalo2 Alexandre RONGIER : https://www.alexandre-rongier.fr
   - Un projet financé par la Fabsonic : https://lafabsonic.fr/
