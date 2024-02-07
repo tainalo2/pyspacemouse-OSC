@@ -37,7 +37,7 @@ Il existe déjà une librairie pour recevoir le hid de la spacemouse.
 
   # MAC ARM (M1 et supérieur)
   - téléchargez et installez python 3
-  - pour installer la librairie python-osc exécutez la commande suivante : pip3 install python-osc
+  - via terminal.app : pour installer la librairie python-osc exécutez la commande suivante : pip3 install python-osc
   - téléchargez le script spacemouse_to_OSC.py et le fichier exécutable libhidapi.dylib ; ils doivent impérativement être dans le même dossier
 
   # Test
